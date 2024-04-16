@@ -11,11 +11,11 @@ for (let x = 0; x < 16; x++) {
 }
 
 let mouseDown = 0;
-pixelContainer.onmousedown = function() { 
+document.body.onmousedown = function() { 
   mouseDown = 1;
   console.log(mouseDown);
 }
-pixelContainer.onmouseup = function() {
+document.body.onmouseup = function() {
   mouseDown = 0;
   console.log(mouseDown);
 }
