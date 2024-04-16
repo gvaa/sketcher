@@ -1,0 +1,26 @@
+body {
+    font-family: 'Inter', 'Franklin Gothic Medium', 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    width: 480px;
+    border: 1px solid #000000;
+    flex-wrap: wrap;
+}
+
+.pixel {
+    width: 30px;
+    height: 30px;
+    border: none;
+    /* border: 1px solid #000000; */
+}
+
+.painted {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: red;
+}
