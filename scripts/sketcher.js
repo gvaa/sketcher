@@ -11,9 +11,20 @@ for (let x = 0; x < 16; x++) {
     }
 }
 
+let mouseDown = 0;
+document.body.onmousedown = function() { 
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
+
+
 let pixels = document.getElementsByClassName("pixel");
 Array.from(pixels).forEach(pixel => {
-    pixel.addEventListener("click", function() { 
-    pixel.setAttribute("class", "painted");
+    pixel.addEventListener("mouseenter", function() { 
+    if (mouseDown == 1) {
+        pixel.setAttribute("class", "painted");
+    }
     });
 })
