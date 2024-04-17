@@ -28,8 +28,6 @@ Array.from(pixels).forEach(pixel => {
     }
     });
     pixel.addEventListener("touchstart", function() { 
-      if (mouseDown == 1) {
-          pixel.setAttribute("class", "painted");
-      }
+      pixel.setAttribute("class", "painted");
     });
 })
