@@ -12,7 +12,7 @@ a {
 }
 
 #header {
-    margin-top: 40px;
+    margin-top: 60px;
     font-weight: 600;
     text-align: center;
 }
@@ -22,7 +22,6 @@ a {
     justify-content: center;
     margin: 30px 0;
     user-select: none;
-    touch-action: none;
 }
 
 #pixels {
@@ -31,6 +30,7 @@ a {
     border: 2px solid #9399b2;
     background-color: #b4befe;
     flex-wrap: wrap;
+    touch-action: none;
 }
 
 .pixel {
