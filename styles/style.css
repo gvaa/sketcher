@@ -15,21 +15,21 @@ body {
 
 #pixels {
     display: flex;
-    width: 480px;
+    width: 400px;
     border: 1px solid #000000;
     background-color: #b4befe;
     flex-wrap: wrap;
 }
 
 .pixel {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: none;
 }
 
 .painted {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: none;
     background-color: rgb(243, 139, 168);
 }

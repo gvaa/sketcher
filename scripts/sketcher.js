@@ -37,20 +37,27 @@ Array.from(pixels).forEach(pixel => {
         pixel.setAttribute("class", "pixel");
       }
       });
-
-    // pixel.addEventListener("touchstart", function() { 
-    //   pixel.setAttribute("class", "painted");
-    // });
-    // pixel.addEventListener("touchmove", function() { 
-    //   pixel.setAttribute("class", "painted");
-    // });
 });
 
 let drawTouch = function (e) {
   let currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
-  if (currentElement.getAttribute("class") == "pixel") {
-    currentElement.setAttribute("class", "painted");
+  let currentClass = currentElement.getAttribute("class");
+
+  if (currentClass == "pixel" && currentClass != "now") {
+    currentElement.setAttribute("class", "painted now");
+  } else if (currentClass == "painted" && currentClass != "now") {
+    currentElement.setAttribute("class", "pixel now");
   }
 }
 
+let endTouch = function () {
+  let changedNow = document.getElementsByClassName("now");
+  Array.from(changedNow).forEach(changedPix => {
+    console.log(changedPix);
+    changedPix.className = changedPix.className.replace(" now", "");
+    console.log(changedPix);
+  });
+}
+
 pixelContainer.addEventListener("touchmove", drawTouch);
+pixelContainer.addEventListener("touchend", endTouch);
