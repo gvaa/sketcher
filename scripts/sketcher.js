@@ -10,6 +10,11 @@ for (let x = 0; x < 16; x++) {
     }
 }
 
+pixelContainer.oncontextmenu = function ()
+{
+    return false;
+}
+
 let drawTouch = function (e) {
   let currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
   let currentClass = currentElement.getAttribute("class");
