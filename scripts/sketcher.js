@@ -27,7 +27,7 @@ Array.from(pixels).forEach(pixel => {
         pixel.setAttribute("class", "painted");
     }
     });
-    pixel.addEventListener("touchstart", function() { 
+    pixel.addEventListener("touchmove", function() { 
       pixel.setAttribute("class", "painted");
     });
 })
