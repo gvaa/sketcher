@@ -17,29 +17,6 @@ pixelContainer.oncontextmenu = function ()
     return false;
 }
 
-
-// drawing on touchscreen devices
-let drawTouch = function (e) {
-  let currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
-  let currentClass = currentElement.getAttribute("class");
-
-  if (currentClass == "pixel" && currentClass != "now") {
-    currentElement.setAttribute("class", "painted now");
-  } else if (currentClass == "painted" && currentClass != "now") {
-    currentElement.setAttribute("class", "pixel now");
-  }
-}
-
-let endTouch = function () {
-  let changedNow = document.getElementsByClassName("now");
-  Array.from(changedNow).forEach(changedPix => {
-    changedPix.className = changedPix.className.replace(" now", "");
-  });
-}
-pixelContainer.addEventListener("touchstart", drawTouch);
-pixelContainer.addEventListener("touchmove", drawTouch);
-pixelContainer.addEventListener("touchend", endTouch);
-
 // drawing with mouse
 let mouseDown;
 let mouseButton;
@@ -69,9 +46,47 @@ Array.from(pixels).forEach(pixel => {
     currentPixel = pixel.getAttribute("class");
     mouseButton = e.button;
     if (currentPixel == "pixel" && mouseButton == 0) {
-      pixel.setAttribute("class", "painted");
+      pixel.setAttribute("class", "painted now");
     } else if (currentPixel == "painted" && mouseButton == 2) {
-      pixel.setAttribute("class", "pixel");
+      pixel.setAttribute("class", "pixel now");
     }
     });
 });
+
+// drawing on touchscreen devices
+let currentElement;
+let currentClass;
+
+let startTouch = function (e) {
+  e.preventDefault();
+  currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+  currentClass = currentElement.getAttribute("class");
+  
+  if (currentClass == "pixel") {
+    currentElement.setAttribute("class", "painted now");
+  } else if (currentClass == "painted") {
+    currentElement.setAttribute("class", "pixel now");
+  }
+}
+
+let drawTouch = function (e) {
+  currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+  currentClass = currentElement.getAttribute("class");
+
+  if (currentClass == "pixel") {
+    currentElement.setAttribute("class", "painted now");
+  } else if (currentClass == "painted") {
+    currentElement.setAttribute("class", "pixel now");
+  }
+}
+
+let endTouch = function () {
+  let changedNow = document.getElementsByClassName("now");
+  Array.from(changedNow).forEach(changedPix => {
+    changedPix.className = changedPix.className.replace(" now", "");
+  });
+}
+pixelContainer.addEventListener("touchstart", startTouch);
+pixelContainer.addEventListener("touchmove", drawTouch);
+pixelContainer.addEventListener("touchend", endTouch);
+
