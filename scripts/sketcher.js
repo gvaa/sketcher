@@ -58,7 +58,7 @@ let currentElement;
 let currentClass;
 
 let startTouch = function (e) {
-  e.preventDefault();
+
   currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
   currentClass = currentElement.getAttribute("class");
   
@@ -72,7 +72,6 @@ let startTouch = function (e) {
 let drawTouch = function (e) {
   currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
   currentClass = currentElement.getAttribute("class");
-
   if (currentClass == "pixel") {
     currentElement.setAttribute("class", "painted now");
   } else if (currentClass == "painted") {
@@ -80,7 +79,8 @@ let drawTouch = function (e) {
   }
 }
 
-let endTouch = function () {
+let endTouch = function (e) {
+  e.preventDefault();
   let changedNow = document.getElementsByClassName("now");
   Array.from(changedNow).forEach(changedPix => {
     changedPix.className = changedPix.className.replace(" now", "");
