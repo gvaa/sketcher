@@ -46,9 +46,9 @@ Array.from(pixels).forEach(pixel => {
     currentPixel = pixel.getAttribute("class");
     mouseButton = e.button;
     if (currentPixel == "pixel" && mouseButton == 0) {
-      pixel.setAttribute("class", "painted now");
+      pixel.setAttribute("class", "painted");
     } else if (currentPixel == "painted" && mouseButton == 2) {
-      pixel.setAttribute("class", "pixel now");
+      pixel.setAttribute("class", "pixel");
     }
     });
 });
