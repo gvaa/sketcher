@@ -11,13 +11,13 @@ a {
     color: #b4befe;
 }
 
-#header {
+header {
     margin-top: 60px;
     font-weight: 600;
     text-align: center;
 }
 
-#container {
+#container, #colors-container {
     display: flex;
     justify-content: center;
     margin: 30px 0;
@@ -39,6 +39,21 @@ a {
     border: none;
 }
 
+#colors {
+    display: flex;
+    width: 400px;
+    border: 2px solid #9399b2;
+    background-color: #b4befe;
+    flex-wrap: wrap;
+    touch-action: none;
+}
+
+.color {
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
 .painted {
     width: 25px;
     height: 25px;
@@ -46,7 +61,7 @@ a {
     background-color: rgb(243, 139, 168);
 }
 
-#footer {
+footer {
     margin-bottom: 40px;
     font-size: 10px;
     font-weight: 500;

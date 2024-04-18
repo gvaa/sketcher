@@ -17,6 +17,39 @@ pixelContainer.oncontextmenu = function ()
     return false;
 }
 
+// generating colors
+const mocha = ["#f5e0dc", "#f2cdcd", "#f5c2e7", "#cba6f7", 
+               "#f38ba8", "#eba0ac", "#fab387", "#f9e2af",
+               "#a6e3a1", "#94e2d5", "#89dceb", "#74c7ec",
+               "#89b4fa", "#b4befe", "#cdd6f4", "#1e1e2e"];
+
+const colorsContainer = document.querySelector('#colors');
+const newColor = document.createElement("div");
+newColor.setAttribute("class", "color");
+
+mocha.forEach(color => {
+  newColor.setAttribute("id", color);
+  newColor.style.backgroundColor = color;
+  colorsContainer.appendChild(newColor.cloneNode(true));
+});
+
+
+colorsContainer.oncontextmenu = function ()
+{
+    return false;
+}
+
+let selectColor = function(e) {
+  console.log(e.target.id);
+  console.log(pixelContainer.getElementsByClassName("pixel"));
+  let coloredPixels = document.getElementsByClassName("pixel");
+  Array.from(coloredPixels).forEach(colorPixel => {
+    colorPixel.style.backgroundColor = e.target.id;
+  }) 
+}
+
+colorsContainer.addEventListener("click", selectColor);
+
 // drawing with mouse
 let mouseDown;
 let mouseButton;
