@@ -1,5 +1,7 @@
 "use strict";
 
+
+// generating pixel grid
 const pixelContainer = document.querySelector('#pixels');
 const newPixel = document.createElement("div");
 newPixel.setAttribute("class", "pixel");
@@ -15,6 +17,8 @@ pixelContainer.oncontextmenu = function ()
     return false;
 }
 
+
+// drawing on touchscreen devices
 let drawTouch = function (e) {
   let currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
   let currentClass = currentElement.getAttribute("class");
@@ -26,48 +30,48 @@ let drawTouch = function (e) {
   }
 }
 
-let endDraw = function () {
+let endTouch = function () {
   let changedNow = document.getElementsByClassName("now");
   Array.from(changedNow).forEach(changedPix => {
-    console.log(changedPix);
     changedPix.className = changedPix.className.replace(" now", "");
-    console.log(changedPix);
   });
 }
+pixelContainer.addEventListener("touchmove", drawTouch);
+pixelContainer.addEventListener("touchend", endTouch);
 
-let mouseDown = 0;
+
+// drawing with mouse
+let mouseDown;
+let mouseButton;
+
 document.body.addEventListener("mousedown", function() { 
   mouseDown = 1;
-  console.log(mouseDown);
 });
 document.body.addEventListener("mouseup", function() {
   mouseDown = 0;
-  console.log(mouseDown);
 });
 
 let pixels = document.getElementsByClassName("pixel");
 Array.from(pixels).forEach(pixel => {
-  let currentPixel = pixel.getAttribute("class");
-  pixel.addEventListener("mouseover", function() {
+  let currentPixel;
+  
+  pixel.addEventListener("mouseenter", function(e) {
     currentPixel = pixel.getAttribute("class");
-    if (mouseDown == 1 && currentPixel == "pixel") {
-      pixel.setAttribute("class", "painted now");
-    } else if (mouseDown == 1 && currentPixel == "painted") {
-      pixel.setAttribute("class", "pixel now");
+    if (mouseDown == 1 && currentPixel == "pixel" && mouseButton == 0) {
+      pixel.setAttribute("class", "painted");
+    } 
+    if (mouseDown == 1 && currentPixel == "painted" && mouseButton == 2) {
+      pixel.setAttribute("class", "pixel");
     }
     });
 
-  pixel.addEventListener("mousedown", function() { 
+  pixel.addEventListener("mousedown", function(e) { 
     currentPixel = pixel.getAttribute("class");
-    if (currentPixel == "pixel") {
-      pixel.setAttribute("class", "painted now");
-    } else if (currentPixel == "painted") {
-      pixel.setAttribute("class", "pixel now");
+    mouseButton = e.button;
+    if (currentPixel == "pixel" && mouseButton == 0) {
+      pixel.setAttribute("class", "painted");
+    } else if (currentPixel == "painted" && mouseButton == 2) {
+      pixel.setAttribute("class", "pixel");
     }
     });
-
-  pixel.addEventListener("mouseup", endDraw);
 });
-
-pixelContainer.addEventListener("touchmove", drawTouch);
-pixelContainer.addEventListener("touchend", endDraw);
