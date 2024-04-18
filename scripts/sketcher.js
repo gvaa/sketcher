@@ -36,9 +36,9 @@ let endTouch = function () {
     changedPix.className = changedPix.className.replace(" now", "");
   });
 }
+pixelContainer.addEventListener("touchstart", drawTouch);
 pixelContainer.addEventListener("touchmove", drawTouch);
 pixelContainer.addEventListener("touchend", endTouch);
-
 
 // drawing with mouse
 let mouseDown;
