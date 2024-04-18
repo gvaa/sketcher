@@ -1,6 +1,6 @@
 # Simple sketching project implemented with JavaScript
-A part of The Odin Project (Etch-a-Sketch) with some touch screen functionality.
-
-Colors by [catppuccin](https://catppuccin.com/).
+Initial idea by The Odin Project (Etch-a-Sketch), with some added touch screen functionality.
 
 [Live Demo](https://gvaa.github.io/sketcher/).
+
+Colors by [catppuccin](https://catppuccin.com/).
