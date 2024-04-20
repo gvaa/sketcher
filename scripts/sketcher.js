@@ -39,16 +39,30 @@ colorsContainer.oncontextmenu = function ()
     return false;
 }
 
+let frontColor = "#f38ba8";
+let backColor = "#b4befe";
+let colorMouseButton;
+
 let selectColor = function(e) {
-  console.log(e.target.id);
-  console.log(pixelContainer.getElementsByClassName("pixel"));
-  let coloredPixels = document.getElementsByClassName("pixel");
+  // console.log(e.target.id);
+  colorMouseButton = e.button;
+  // console.log(colorMouseButton);
+  switch(colorMouseButton) {
+    case 0:
+      frontColor = e.target.id;
+      break;
+    case 2:
+      backColor = e.target.id;
+      break;
+  }
+  let coloredPixels = pixelContainer.getElementsByClassName("pixel");
   Array.from(coloredPixels).forEach(colorPixel => {
-    colorPixel.style.backgroundColor = e.target.id;
+    console.log(backColor);
+    colorPixel.style.backgroundColor = backColor;
   }) 
 }
 
-colorsContainer.addEventListener("click", selectColor);
+colorsContainer.addEventListener("mousedown", selectColor);
 
 // drawing with mouse
 let mouseDown;
