@@ -26,7 +26,7 @@ p {
 }
 
 p#name {
-    width: 336px;
+    width: 320px;
     margin: 0;
 }
 
@@ -45,7 +45,6 @@ p#name {
 }
 
 #back-color {
-    /* margin-left: 20px; */
     width: 15px;
     height: 15px;
     border: 1px solid #9399b2;
@@ -70,7 +69,8 @@ p#name {
 
 #pixels {
     display: flex;
-    width: 400px;
+    min-width: 384px;
+    width: 384px;
     border: 2px solid #9399b2;
     border-radius: 3px;
     background-color: #b4befe;
@@ -79,14 +79,15 @@ p#name {
 }
 
 .pixel {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border: none;
 }
 
 #colors {
-    display: flex;
-    width: 400px;
+    display: flex;    
+    min-width: 384px;
+    width: 384px;
     border: 2px solid #9399b2;
     border-radius: 3px;
     background-color: #b4befe;
@@ -95,14 +96,14 @@ p#name {
 }
 
 .color {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border: none;
 }
 
 .painted {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border: none;
     background-color: rgb(243, 139, 168);
 }
