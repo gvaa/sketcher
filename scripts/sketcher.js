@@ -2,9 +2,18 @@
 
 
 // generating pixel grid
+const gridSlider = document.querySelector('#gridRange');
 const pixelContainer = document.querySelector('#pixels');
 const newPixel = document.createElement("div");
 newPixel.setAttribute("class", "pixel");
+
+let onChangeRange = function () {
+  console.log(gridSlider.value);
+}
+
+
+
+gridSlider.addEventListener('change', onChangeRange)
 
 for (let x = 0; x < 16; x++) {
     for (let y = 0; y < 16; y++) {

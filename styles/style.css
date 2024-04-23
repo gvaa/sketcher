@@ -108,7 +108,12 @@ p#name {
     background-color: rgb(243, 139, 168);
 }
 
+#slide-container {
+    text-align: center;
+}
+
 footer {
+    margin-top: 30px;
     margin-bottom: 40px;
     font-size: 10px;
     font-weight: 500;
