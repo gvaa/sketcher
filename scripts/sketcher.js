@@ -1,6 +1,5 @@
 "use strict";
 
-
 // generating pixel grid
 const pixelGridSize = 384;
 const gridSlider = document.querySelector('#gridRange');
@@ -19,7 +18,6 @@ let createPixelGrid = function () {
   switch(pixelsScale) {
     case "0":
       pixelsScaleConverted = 8;
-      // console.log(pixelsScale);
       break;
     case "1":
       pixelsScaleConverted = 16;
@@ -54,6 +52,17 @@ pixelContainer.oncontextmenu = function ()
     return false;
 }
 
+// adding listeners for drawing with mouse
+let mouseDown;
+let mouseButton;
+
+document.body.addEventListener("mousedown", function() { 
+  mouseDown = 1;
+});
+document.body.addEventListener("mouseup", function() {
+  mouseDown = 0;
+});
+
 let addDrawEventListeners = function() {
   let pixels = document.getElementsByClassName("pixel");
   Array.from(pixels).forEach(pixel => {
@@ -85,6 +94,9 @@ let addDrawEventListeners = function() {
   });
 }
 
+addDrawEventListeners();
+
+// changing the scale
 let onChangeRange = function () {
   pixelsScale = gridSlider.value;
   pixelContainer.textContent = '';
@@ -117,14 +129,20 @@ colorsContainer.oncontextmenu = function ()
 }
 
 
-
+// selecting colors on the color ribbon
 const currentBackColor = document.querySelector('#back-color');
 const currentFrontColor = document.createElement("div");
 currentFrontColor.setAttribute("id", "front-color");
 currentFrontColor.style.backgroundColor = frontColor;
 currentBackColor.appendChild(currentFrontColor);
-
 let colorMouseButton;
+
+let recolorBackground = function() {
+  let unColoredPixels = pixelContainer.getElementsByClassName("pixel");
+  Array.from(unColoredPixels).forEach(colorPixel => {
+    colorPixel.style.backgroundColor = backColor;
+  }) 
+}
 
 let selectColor = function(e) {
   colorMouseButton = e.button;
@@ -138,32 +156,37 @@ let selectColor = function(e) {
       currentBackColor.style.backgroundColor = backColor;
       break;
   }
-  let unColoredPixels = pixelContainer.getElementsByClassName("pixel");
-  Array.from(unColoredPixels).forEach(colorPixel => {
-    colorPixel.style.backgroundColor = backColor;
-  }) 
+  recolorBackground();
 }
 
 colorsContainer.addEventListener("mousedown", selectColor);
 
-// drawing with mouse
-let mouseDown;
-let mouseButton;
-
-document.body.addEventListener("mousedown", function() { 
-  mouseDown = 1;
-});
-document.body.addEventListener("mouseup", function() {
-  mouseDown = 0;
-});
-
-
-
-addDrawEventListeners();
-
 // drawing on touchscreen devices
 let currentElement;
 let currentClass;
+let timer;
+let currentId;
+const touchDuration = 500;
+
+let onLongTouch = function () {
+  backColor = currentId;
+  currentBackColor.style.backgroundColor = backColor;
+  recolorBackground();
+}
+
+let chooseBackColor = function (e) {
+  currentElement = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY);
+  currentId = currentElement.getAttribute("id");
+  // setting timer to activate a function after some time (= emulating long touch)
+  timer = setTimeout(onLongTouch, touchDuration); 
+}
+
+let endChooseBackColor = function () { 
+  // clear timer if touch was not long enough, so long touch function does not trigger
+  if (timer) {
+    clearTimeout(timer);
+  }
+}
 
 let startTouch = function (e) {
   e.preventDefault();
@@ -172,8 +195,10 @@ let startTouch = function (e) {
   
   if (currentClass == "pixel") {
     currentElement.setAttribute("class", "painted now");
+    currentElement.style.backgroundColor = frontColor;
   } else if (currentClass == "painted") {
     currentElement.setAttribute("class", "pixel now");
+    currentElement.style.backgroundColor = backColor;
   }
 }
 
@@ -183,8 +208,10 @@ let drawTouch = function (e) {
 
   if (currentClass == "pixel") {
     currentElement.setAttribute("class", "painted now");
+    currentElement.style.backgroundColor = frontColor;
   } else if (currentClass == "painted") {
     currentElement.setAttribute("class", "pixel now");
+    currentElement.style.backgroundColor = backColor;
   }
 }
 
@@ -198,3 +225,5 @@ pixelContainer.addEventListener("touchstart", startTouch);
 pixelContainer.addEventListener("touchmove", drawTouch);
 pixelContainer.addEventListener("touchend", endTouch);
 
+colorsContainer.addEventListener("touchstart", chooseBackColor);
+colorsContainer.addEventListener("touchend", endChooseBackColor);
