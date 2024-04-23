@@ -15,7 +15,7 @@ header {
     margin-top: 60px;
     margin-bottom: 20px;
     font-weight: 600;
-    /* text-align: center; */
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,10 +25,29 @@ p {
     margin: 0;
 }
 
+p#name {
+    width: 336px;
+    margin: 0;
+}
+
+#helper {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 34px;
+}
+
+#questionmark {
+    cursor: default;
+    font-size: 14px;
+    width: 17px;
+    height: 17px;   
+}
+
 #back-color {
-    margin-left: 20px;
-    width: 16px;
-    height: 16px;
+    /* margin-left: 20px; */
+    width: 15px;
+    height: 15px;
     border: 1px solid #9399b2;
     border-radius: 3px;
 }
@@ -36,9 +55,9 @@ p {
 #front-color {
     margin-top: 1px;
     margin-left: 1px;
-    width: 10px;
-    height: 10px;
-    border: 1px solid black;
+    width: 9px;
+    height: 9px;
+    border: 1px solid rgb(68, 68, 68);
     border-radius: 3px;
 }
 
@@ -53,6 +72,7 @@ p {
     display: flex;
     width: 400px;
     border: 2px solid #9399b2;
+    border-radius: 3px;
     background-color: #b4befe;
     flex-wrap: wrap;
     touch-action: none;
@@ -68,6 +88,7 @@ p {
     display: flex;
     width: 400px;
     border: 2px solid #9399b2;
+    border-radius: 3px;
     background-color: #b4befe;
     flex-wrap: wrap;
     touch-action: none;
