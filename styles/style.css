@@ -39,6 +39,14 @@ header {
     border: none;
 }
 
+.f5e0dc {
+    background-color: #f5e0dc;
+}
+
+.f2cdcd {
+    background-color: #f2cdcd;
+}
+
 #colors {
     display: flex;
     width: 400px;

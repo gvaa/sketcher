@@ -81,20 +81,24 @@ Array.from(pixels).forEach(pixel => {
   
   pixel.addEventListener("mouseenter", function(e) {
     currentPixel = pixel.getAttribute("class");
-    if (mouseDown == 1 && currentPixel == "pixel" && mouseButton == 0) {
+    if (mouseDown == 1 && mouseButton == 0) {
       pixel.setAttribute("class", "painted");
+      pixel.style.backgroundColor = frontColor;
     } 
-    if (mouseDown == 1 && currentPixel == "painted" && mouseButton == 2) {
+    if (mouseDown == 1 && mouseButton == 2) {
       pixel.setAttribute("class", "pixel");
+      pixel.style.backgroundColor = backColor;
     }
     });
 
   pixel.addEventListener("mousedown", function(e) { 
     currentPixel = pixel.getAttribute("class");
     mouseButton = e.button;
-    if (currentPixel == "pixel" && mouseButton == 0) {
+    if (mouseButton == 0) {
+      pixel.style.backgroundColor = frontColor;
       pixel.setAttribute("class", "painted");
-    } else if (currentPixel == "painted" && mouseButton == 2) {
+    } else if (mouseButton == 2) {
+      pixel.style.backgroundColor = backColor;
       pixel.setAttribute("class", "pixel");
     }
     });
