@@ -109,6 +109,51 @@ p#name {
 }
 
 #slide-container {
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.slider {
+    appearance: none;
+    width: 100px;
+    height: 16px;
+    background: #9399b2;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 3px;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #94e2d5;
+    cursor: pointer;
+    border-radius: 3px;
+}
+  
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #94e2d5;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#grid-size {
+    width: 32px;
+    margin-left: 10px;
+    font-size: 10px;
     text-align: center;
 }
 

@@ -10,6 +10,7 @@ let frontColor = "#f38ba8";
 let backColor = "#b4befe";
 newPixel.setAttribute("class", "pixel");
 let pixelsScale = gridSlider.value;
+let gridSizePara = document.querySelector('#grid-size')
 
 let createPixelGrid = function () {
   let pixelsScaleConverted;
@@ -43,6 +44,7 @@ let createPixelGrid = function () {
           pixelContainer.appendChild(newPixel.cloneNode(true));
       }
   }
+  gridSizePara.innerText = pixelsScaleConverted + "x" + pixelsScaleConverted;
 }
 
 createPixelGrid();
