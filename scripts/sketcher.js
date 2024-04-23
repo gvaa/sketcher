@@ -2,29 +2,95 @@
 
 
 // generating pixel grid
+const pixelGridSize = 384;
 const gridSlider = document.querySelector('#gridRange');
 const pixelContainer = document.querySelector('#pixels');
 const newPixel = document.createElement("div");
+let frontColor = "#f38ba8";
+let backColor = "#b4befe";
 newPixel.setAttribute("class", "pixel");
+let pixelsScale = gridSlider.value;
 
-let onChangeRange = function () {
-  console.log(gridSlider.value);
-}
-
-
-
-gridSlider.addEventListener('change', onChangeRange)
-
-for (let x = 0; x < 16; x++) {
-    for (let y = 0; y < 16; y++) {
-        pixelContainer.appendChild(newPixel.cloneNode(true));
+let createPixelGrid = function () {
+  let pixelsScaleConverted;
+  let pixelGridSizeConverted;
+  
+  switch(pixelsScale) {
+    case "0":
+      pixelsScaleConverted = 8;
+      // console.log(pixelsScale);
+      break;
+    case "1":
+      pixelsScaleConverted = 16;
+      break;
+    case "2":
+      pixelsScaleConverted = 32;
+      break;
+    // case "3":
+    //   pixelsScaleConverted = 64;
+    //   break;
+    // case "4":
+    //   pixelsScaleConverted = 128;
+    //   break;
     }
+
+  pixelGridSizeConverted = pixelGridSize / pixelsScaleConverted;
+  newPixel.style.width = pixelGridSizeConverted+"px";
+  newPixel.style.height = pixelGridSizeConverted+"px";
+  newPixel.style.backgroundColor = backColor;
+  for (let x = 0; x < pixelsScaleConverted; x++) {
+      for (let y = 0; y < pixelsScaleConverted; y++) {
+          pixelContainer.appendChild(newPixel.cloneNode(true));
+      }
+  }
 }
+
+createPixelGrid();
 
 pixelContainer.oncontextmenu = function ()
 {
     return false;
 }
+
+let addDrawEventListeners = function() {
+  let pixels = document.getElementsByClassName("pixel");
+  Array.from(pixels).forEach(pixel => {
+    let currentPixel;
+    
+    pixel.addEventListener("mouseenter", function(e) {
+      currentPixel = pixel.getAttribute("class");
+      if (mouseDown == 1 && mouseButton == 0) {
+        pixel.setAttribute("class", "painted");
+        pixel.style.backgroundColor = frontColor;
+      } 
+      if (mouseDown == 1 && mouseButton == 2) {
+        pixel.setAttribute("class", "pixel");
+        pixel.style.backgroundColor = backColor;
+      }
+      });
+
+    pixel.addEventListener("mousedown", function(e) { 
+      currentPixel = pixel.getAttribute("class");
+      mouseButton = e.button;
+      if (mouseButton == 0) {
+        pixel.style.backgroundColor = frontColor;
+        pixel.setAttribute("class", "painted");
+      } else if (mouseButton == 2) {
+        pixel.style.backgroundColor = backColor;
+        pixel.setAttribute("class", "pixel");
+      }
+      });
+  });
+}
+
+let onChangeRange = function () {
+  pixelsScale = gridSlider.value;
+  pixelContainer.textContent = '';
+  createPixelGrid();
+  addDrawEventListeners();
+}
+
+gridSlider.addEventListener('change', onChangeRange)
 
 // generating colors
 const mocha = ["#f5e0dc", "#f2cdcd", "#f5c2e7", "#cba6f7", 
@@ -48,8 +114,7 @@ colorsContainer.oncontextmenu = function ()
     return false;
 }
 
-let frontColor = "#f38ba8";
-let backColor = "#b4befe";
+
 
 const currentBackColor = document.querySelector('#back-color');
 const currentFrontColor = document.createElement("div");
@@ -71,8 +136,8 @@ let selectColor = function(e) {
       currentBackColor.style.backgroundColor = backColor;
       break;
   }
-  let coloredPixels = pixelContainer.getElementsByClassName("pixel");
-  Array.from(coloredPixels).forEach(colorPixel => {
+  let unColoredPixels = pixelContainer.getElementsByClassName("pixel");
+  Array.from(unColoredPixels).forEach(colorPixel => {
     colorPixel.style.backgroundColor = backColor;
   }) 
 }
@@ -90,34 +155,9 @@ document.body.addEventListener("mouseup", function() {
   mouseDown = 0;
 });
 
-let pixels = document.getElementsByClassName("pixel");
-Array.from(pixels).forEach(pixel => {
-  let currentPixel;
-  
-  pixel.addEventListener("mouseenter", function(e) {
-    currentPixel = pixel.getAttribute("class");
-    if (mouseDown == 1 && mouseButton == 0) {
-      pixel.setAttribute("class", "painted");
-      pixel.style.backgroundColor = frontColor;
-    } 
-    if (mouseDown == 1 && mouseButton == 2) {
-      pixel.setAttribute("class", "pixel");
-      pixel.style.backgroundColor = backColor;
-    }
-    });
 
-  pixel.addEventListener("mousedown", function(e) { 
-    currentPixel = pixel.getAttribute("class");
-    mouseButton = e.button;
-    if (mouseButton == 0) {
-      pixel.style.backgroundColor = frontColor;
-      pixel.setAttribute("class", "painted");
-    } else if (mouseButton == 2) {
-      pixel.style.backgroundColor = backColor;
-      pixel.setAttribute("class", "pixel");
-    }
-    });
-});
+
+addDrawEventListeners();
 
 // drawing on touchscreen devices
 let currentElement;
