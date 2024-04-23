@@ -41,23 +41,29 @@ colorsContainer.oncontextmenu = function ()
 
 let frontColor = "#f38ba8";
 let backColor = "#b4befe";
+
+const currentBackColor = document.querySelector('#back-color');
+const currentFrontColor = document.createElement("div");
+currentFrontColor.setAttribute("id", "front-color");
+currentFrontColor.style.backgroundColor = frontColor;
+currentBackColor.appendChild(currentFrontColor);
+
 let colorMouseButton;
 
 let selectColor = function(e) {
-  // console.log(e.target.id);
   colorMouseButton = e.button;
-  // console.log(colorMouseButton);
   switch(colorMouseButton) {
     case 0:
       frontColor = e.target.id;
+      currentFrontColor.style.backgroundColor = frontColor;
       break;
     case 2:
       backColor = e.target.id;
+      currentBackColor.style.backgroundColor = backColor;
       break;
   }
   let coloredPixels = pixelContainer.getElementsByClassName("pixel");
   Array.from(coloredPixels).forEach(colorPixel => {
-    console.log(backColor);
     colorPixel.style.backgroundColor = backColor;
   }) 
 }

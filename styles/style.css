@@ -13,8 +13,33 @@ a {
 
 header {
     margin-top: 60px;
+    margin-bottom: 20px;
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin: 0;
+}
+
+#back-color {
+    margin-left: 20px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #9399b2;
+    border-radius: 3px;
+}
+
+#front-color {
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 #container, #colors-container {
@@ -37,14 +62,6 @@ header {
     width: 25px;
     height: 25px;
     border: none;
-}
-
-.f5e0dc {
-    background-color: #f5e0dc;
-}
-
-.f2cdcd {
-    background-color: #f2cdcd;
 }
 
 #colors {
