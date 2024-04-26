@@ -1,17 +1,17 @@
-# Sketchy - A simple sketching project
+# Sketchy - a simple sketching project
 Sketchy is a simple sketching app with the idea coming from The Odin Project.
 
-### Features
+## Features
 - Sketching with the mouse 
 - Sketching on the touchscreens
 - Choice of colors from catppuccin mocha color palette
 - 8x8, 16x6 and 32x32 sketching areas
 
-### Live Demo
+## Live Demo
 You can access the project [here](https://gvaa.github.io/sketchy/).
 
+![Peek 2024-04-26 23-55e1](https://github.com/gvaa/sketchy/assets/109627508/ed0e3ecd-5893-4db0-9aa5-122cf1f1e089)
 
-
-Idea by The Odin Project (Etch-a-Sketch assignment), with some added touch screen functionality.
-
-Colors by [catppuccin](https://catppuccin.com/).
+## Credits
+- Idea by [The Odin Project](https://www.theodinproject.com/) (Etch-a-Sketch assignment).
+- Colors by [catppuccin](https://catppuccin.com/).
