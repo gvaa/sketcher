@@ -5,7 +5,7 @@ Sketchy is a simple sketching app with the idea coming from The Odin Project.
 - Sketching with the mouse 
 - Sketching on the touchscreens
 - Choice of colors from catppuccin mocha color palette
-- 8x8, 16x6 and 32x32 sketching areas
+- 8x8, 16x16 and 32x32 sketching areas
 
 ## Live Demo
 You can access the project [here](https://gvaa.github.io/sketchy/).
