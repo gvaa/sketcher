@@ -1,5 +1,5 @@
-# Sketcher. A simple sketching project.
-Sketcher is a simple sketching app with the idea coming from The Odin Project.
+# Sketchy - A simple sketching project
+Sketchy is a simple sketching app with the idea coming from The Odin Project.
 
 ### Features
 - Sketching with the mouse 
@@ -8,7 +8,8 @@ Sketcher is a simple sketching app with the idea coming from The Odin Project.
 - 8x8, 16x6 and 32x32 sketching areas
 
 ### Live Demo
-[You can access the project at](https://gvaa.github.io/sketchy/)
+You can access the project [here](https://gvaa.github.io/sketchy/).
+
 
 
 Idea by The Odin Project (Etch-a-Sketch assignment), with some added touch screen functionality.
