@@ -227,3 +227,9 @@ pixelContainer.addEventListener("touchend", endTouch);
 
 colorsContainer.addEventListener("touchstart", chooseBackColor);
 colorsContainer.addEventListener("touchend", endChooseBackColor);
+
+// const helpPopup = document.querySelector("#questionmark");
+function helpPopup() {
+  var popup = document.getElementById("helpPopup");
+  popup.classList.toggle("show");
+}

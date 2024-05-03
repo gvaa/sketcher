@@ -10,17 +10,23 @@
 </head>
 <body>
     <header>
-        <div id="helper">
+        <div class="helper">
         </div>
         <p id="name">sKeTcHy</p>
-        <div id="helper" title="Click on the color bar / drawing area below:&#013;
+        <div class="helper" title="Click on the color bar / drawing area below:&#013;
 Left button -> select main color / paint&#013;
 Right button -> select background color / erase&#013;
 Click and hold -> continuous drawing / erasing">
             <div id="back-color">
             </div>
-            <div id="questionmark">
-            <p>?</p>
+            <div id="questionmark" ontouchstart="helpPopup()">
+                <p>?</p>
+                <span class="popuptext" id="helpPopup">
+                    Tap on the color bar / drawing area:<br><br> 
+                    Tap -> select main color / paint<br> 
+                    Long tap -> select background color / erase<br>
+                    Swipe -> continuous drawing / erasing
+                </span>
             </div>
         </div>
     </header>
