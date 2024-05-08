@@ -13,5 +13,5 @@ You can access the project [here](https://gvaa.github.io/sketchy/).
 ![Peek 2024-04-26 23-55e1](https://github.com/gvaa/sketchy/assets/109627508/ed0e3ecd-5893-4db0-9aa5-122cf1f1e089)
 
 ## Credits
-- Idea by [The Odin Project](https://www.theodinproject.com/) (Etch-a-Sketch assignment)
+- Idea by [The Odin Project](https://www.theodinproject.com/) (Project: Etch-a-Sketch)
 - Colors by [catppuccin](https://catppuccin.com/)
